@@ -1,0 +1,87 @@
+{
+    "Actor": {
+        "types": ["character", "npc"],
+        "templates": {
+            "base": {
+                "health": {
+                    "value": 6,
+                    "min": 0,
+                    "max": 6
+                },
+                "hope": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 5
+                },
+                "biography": ""
+            }
+        },
+        "character" : {
+            "templates": ["base"],
+            "attributes": {
+                "level" : { "value" : 1 }
+            },
+            "abilities" : {}
+        },
+        "npc" : {
+            "templates": ["base"]
+        }
+    },
+    "Item": {
+        "types": [
+            "class",
+            "foundation", 
+            "domain", 
+            "heritage",
+            "spell",
+            "item"
+        ],
+        "templates": {
+            "itemDescription": {
+                "description": ""
+            }
+        },
+        "class": {"templates": ["itemDescription"]},
+        "foundation": {"templates": ["itemDescription"]},
+        "domain": {
+            "templates": ["itemDescription"],
+            "domain": "",
+            "type": ""
+        },
+        "heritage": {"templates": ["itemDescription"]},
+        "item": {
+            "templates": ["itemDescription"],
+            "itemType": "none",
+            "value": 0,
+            "magic": {
+                "isMagical" :false,
+                "charges": {
+                    "hasCharges": false,
+                    "value": 0,
+                    "max": 0,
+                    "min": 0,
+                    "recharge": "none",
+                    "degradeToDust": false
+                },
+                "attunement" : {
+                    "requiresAttunement": false,
+                    "attuned": false
+                }
+            },            
+            "equipment": {
+                "equipable" : false,
+                "isEquipped": false
+            },
+            "weapon": {
+                "damage": 0,
+                "range": "dh.range.melee"
+            },
+            "armor": {
+                "damageReduction": 0
+            },
+            "consumable": {
+                "uses": 0
+            }
+        }
+    }
+}

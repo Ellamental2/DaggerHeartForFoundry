@@ -1,0 +1,57 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64" />
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Item Name"></h1>
+    </header>
+    <div>
+        <table>
+            <tr>
+                <th>{{localize "dh.item.type"}}</th>
+                <th>{{localize "dh.item.value"}}</th>
+                <th>{{localize "dh.item.Magic"}}</th>
+                {{#if item.system.magic.isMagical}}
+                    <th>{{localize "dh.item.requiresAttunement"}}</th>
+                    {{#if item.system.magic.attunement.requiresAttunement}}
+                        <th>{{localize "dh.item.attuned"}}</th>
+                    {{/if}}
+                {{/if}}
+                {{#if (eq item.system.itemType "weapon")}}
+                    <th>{{localize "dh.item.damage"}}</th>
+                    <th>{{localize "dh.item.range"}}</th>
+                {{/if}}
+            </tr>
+            <tr>
+                <td>
+                    <select name="data.itemType">
+                        {{#select item.system.itemType}}
+                        {{#each config.ItemTypes as |name type|}}
+                            <option value="{{item.system.itemType}}">{{localize name}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                </td>
+                <td><input name="value" type="number" value="{{item.system.value}}" placeholder="Value"></td>
+                <td><input name="isMagicItem" type="checkbox" {{checked item.system.magic.isMagical}}></td>
+                {{#if item.system.magic.isMagical}}
+                    <td><input name="requiresAttunement" type="checkbox" {{checked item.system.magic.attunement.requiresAttunement}}></td>
+                    {{#if item.system.magic.attunement.requiresAttunement}}
+                        <td><input name="attuned" type="checkbox" value="{{item.system.magic.attunement.attuned}}"></td>
+                    {{/if}}
+                {{/if}}
+                {{#if (eq item.system.itemType "weapon")}}
+                    <td><input name="damage" type="text" value="{{item.system.weapon.damage}}" placeholder="Damage"></td>
+                    <td>
+                        <select name="range">
+                            {{#select item.system.weapon.range}}
+                            {{#each config.ranges as |name range|}}
+                                <option value="{{range}}">{{name}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </td>
+                {{/if}}
+            </tr>
+        </table>
+        <textarea name="description" placeholder="Description">{{item.system.description}}</textarea>
+    </div>
+</form>

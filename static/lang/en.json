@@ -1,0 +1,17 @@
+{
+    "dh": {
+        "item": {
+            "type": {
+                "weapon": "Weapon",
+                "armor": "Armour",
+                "consumable": "Consumable"
+            }
+        },
+        "range" : {
+            "melee": "Melee",
+            "close": "Close",
+            "far": "Far",
+            "veryFar": "VeryFar"
+        }
+    }
+}

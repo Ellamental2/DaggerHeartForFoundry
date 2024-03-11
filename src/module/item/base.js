@@ -1,0 +1,1 @@
+class DHItem extends Item {}
